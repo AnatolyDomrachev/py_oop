@@ -37,12 +37,38 @@ class Apartment(HouseScheme):
         string = 'Apartment: Количество жилых комнат '+str(self.room_num)+', Жилая площадь '+str(self.S)+', Совмещенный санузел '+str(self.su)+', Этаж '+str(self.et)+', Окна выходят на '+self.okna
         return string
 
+class CountryHouseList(list):
+    def __init__(self, name):
+        super().__init__()
+        self.name = name
 
+    def append(self, p_object):
+        if type(p_object) == CountryHouse:
+            super().append(p_object)
+        else:
+            error = 'Invalid type '+str(type(p_object))
+            raise TypeError(error)
+
+    def total_square(self):
+        ts = 0
+        for ch in self:
+            ts += ch.S
+        return ts
 
 
 a=HouseScheme(1,1,True)
 b=CountryHouse(1,1,1,1,1)
+c=Apartment(1,1,1,1,'N')
+chl=CountryHouseList("chl_name")
+
+chl.append(b)
+for ch in chl:
+    print(ch.__str__());
+print ("total_square :", chl.total_square())
+
 print(a.su)
 print(b.su)
 print(b.__str__())
+print(c.su)
+print(c.__str__())
 
