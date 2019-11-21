@@ -55,6 +55,20 @@ class CountryHouseList(list):
             ts += ch.S
         return ts
 
+class ApartmentList(list):
+    def __init__(self, name):
+        super().__init__()
+        self.name = name
+
+    def extend(self, iterable):
+        for element in iterable:
+            if type(element) == Apartment:
+                self.append(element)
+
+    def floor_view(self, floors, directions):
+        res = list(filter(lambda a: a.etazh in range(floors[0], floors[1]+1) and a.svet in directions, self))
+        res = '\n'.join([': '.join([str(i.svet), str(i.etazh)]) for i in res])
+        print(res)
 
 a=HouseScheme(1,1,True)
 b=CountryHouse(1,1,1,1,1)
