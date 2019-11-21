@@ -70,29 +70,3 @@ class ApartmentList(list):
         for el in lv:
             print(el.okna+": "+str(el.et))
 
-
-a=HouseScheme(1,1,True)
-b=CountryHouse(1,1,1,1,1)
-c1=Apartment(1,1,1,1,'N')
-c2=Apartment(2,2,1,2,'S')
-c3=Apartment(3,3,1,3,'W')
-c4=Apartment(4,4,1,1,'N')
-chl=CountryHouseList("chl_name")
-al = ApartmentList("al_name")
-l1=[c1,c2]
-l2=[c3,c4]
-al.extend(l1)
-al.extend(l2)
-al.floor_view([1],['N'])
-
-chl.append(b)
-for ch in chl:
-    print(ch.__str__());
-print ("total_square :", chl.total_square())
-
-print(a.su)
-print(b.su)
-print(b.__str__())
-print(c1.su)
-print(c1.__str__())
-
