@@ -65,15 +65,28 @@ class ApartmentList(list):
             if type(element) == Apartment:
                 self.append(element)
 
+    def TestApartment(self, etagi, napravlenie):
+        if(self.)
+
+'''
     def floor_view(self, floors, directions):
         res = list(filter(lambda a: a.etazh in range(floors[0], floors[1]+1) and a.svet in directions, self))
         res = '\n'.join([': '.join([str(i.svet), str(i.etazh)]) for i in res])
         print(res)
-
+'''
 a=HouseScheme(1,1,True)
 b=CountryHouse(1,1,1,1,1)
-c=Apartment(1,1,1,1,'N')
+c1=Apartment(1,1,1,1,'N')
+c2=Apartment(2,2,1,2,'N')
+c3=Apartment(3,3,1,3,'N')
+c4=Apartment(4,4,1,4,'N')
 chl=CountryHouseList("chl_name")
+al = ApartmentList("al_name")
+l1=[c1,c2]
+l2=[c3,c4]
+al.extend(l1)
+al.extend(l2)
+
 
 chl.append(b)
 for ch in chl:
@@ -83,6 +96,6 @@ print ("total_square :", chl.total_square())
 print(a.su)
 print(b.su)
 print(b.__str__())
-print(c.su)
-print(c.__str__())
+print(c1.su)
+print(c1.__str__())
 
