@@ -65,7 +65,7 @@ class ApartmentList(list):
             if type(element) == Apartment:
                 self.append(element)
     def floor_view(self, floors, directions):
-        view = list(filter(lambda a: a.et in floors and a.okna in directions, self))
+        view = list(filter(lambda a: a.et in range(floors[0], floors[1]+1) and a.okna in directions, self))
         lv = list(view)
         for el in lv:
             print(el.okna+": "+str(el.et))
