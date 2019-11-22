@@ -4,7 +4,7 @@ class HouseScheme:
         self.S = S
         self.su = su
 
-        if not isinstance(self.room_num, int) or not self.S > 0  or not isinstance(self.su, bool):
+        if not self.room_num in range(20) or not self.S in range(20) or not self.su in (True, False):
             raise ValueError('Invalid value')
 
 class CountryHouse(HouseScheme):
@@ -17,7 +17,7 @@ class CountryHouse(HouseScheme):
             raise ValueError('Invalid value')
 
     def __str__(self):
-        string = 'Country House: Количество жилых комнат '+str(self.room_num)+', Жилая площадь '+str(self.S)+', Совмещенный санузел '+str(self.su)+', Количество этажей '+str(self.et)+', Площадь участка '+str(self.Su)+'.'
+        string = 'Country House: Количество жилых комнат '+str(self.room_num)+', Жилая площадь '+str(self.S)+', Совмещенный санузел '+str(self.su)+', Количество этажей '+str(self.et)+', Площадь участка '+str(self.Su)
         return string
 
     def __eq__(self, other):
@@ -31,10 +31,10 @@ class Apartment(HouseScheme):
         super().__init__(room_num,S,su)
         self.et=et
         self.okna=okna
-        if not self.et in range(1,16) or not self.okna in ('N','S','W','E'):
+        if not self.et in range(1,16) and not self.okna in ('N','S','W','E'):
             raise ValueError('Invalid value')
     def __str__(self):
-        string = 'Apartment: Количество жилых комнат '+str(self.room_num)+', Жилая площадь '+str(self.S)+', Совмещенный санузел '+str(self.su)+', Этаж '+str(self.et)+', Окна выходят на '+self.okna+'.'
+        string = 'Apartment: Количество жилых комнат '+str(self.room_num)+', Жилая площадь '+str(self.S)+', Совмещенный санузел '+str(self.su)+', Этаж '+str(self.et)+', Окна выходят на '+self.okna
         return string
 
 class CountryHouseList(list):
@@ -69,4 +69,30 @@ class ApartmentList(list):
         lv = list(view)
         for el in lv:
             print(el.okna+": "+str(el.et))
+
+
+a=HouseScheme(1,1,True)
+b=CountryHouse(1,1,1,1,1)
+c1=Apartment(1,1,1,1,'N')
+c2=Apartment(2,2,1,2,'S')
+c3=Apartment(3,3,1,3,'W')
+c4=Apartment(4,4,1,1,'N')
+chl=CountryHouseList("chl_name")
+al = ApartmentList("al_name")
+l1=[c1,c2]
+l2=[c3,c4]
+al.extend(l1)
+al.extend(l2)
+al.floor_view([1],['N'])
+
+chl.append(b)
+for ch in chl:
+    print(ch.__str__());
+print ("total_square :", chl.total_square())
+
+print(a.su)
+print(b.su)
+print(b.__str__())
+print(c1.su)
+print(c1.__str__())
 
